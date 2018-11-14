@@ -110,7 +110,9 @@ Now the query runs in 37 milliseconds, an almost 7x improvement.
 
 ## Other use cases
 
-* Filtering a table by an extract of a timestamp or date field: get the rows that happen on the weekend or between 6 and 18 hours: `where extract('dow' from created_at) > 5`
 * Using casts on your filter to convert between strings and numbers: `where rooms::int = 3`
 * Case insesitive queries where you use `lower(name) = "peter"`
 
+## Note
+
+To be able to create this type of indexes your function call needs to bemarked as `IMMUTABLE`, otherwise their results would depend on the client connected to the database. This is the case for functions that are dependant of the locale settings (time and time zone conversions, currency, etc).
