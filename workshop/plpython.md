@@ -160,7 +160,7 @@ CREATE OR REPLACE FUNCTION reverse_geocode(geocoder TEXT, lon NUMERIC, lat NUMER
 AS $$
     import requests
 
-    # Let's use the shared cache to avoid requesting the geocoder metadata
+    # Let's use the shared cache to avoid preparing the geocoder metadata
     if geocoder in SD:
         plan = SD[geocoder]
     # A prepared statement from Python
