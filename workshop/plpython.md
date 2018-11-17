@@ -89,3 +89,124 @@ $$ LANGUAGE plpythonu;
 
 select foo_module();
 ```
+
+### Demo
+
+Create a trigger to calculate the full address of a pair of coordinates.
+
+- First we are creating a configuration table to store available geocoders metadata:
+
+```sql
+CREATE TABLE geocoders(name TEXT, url TEXT, reverse_url TEXT);
+INSERT INTO geocoders
+VALUES('nominatim',
+       NULL,
+       'https://nominatim.openstreetmap.org/reverse');
+```
+
+- This is the business table with coordinates and addresses:
+
+```sql
+CREATE TABLE locations(lon NUMERIC, lat NUMERIC, full_address TEXT);
+```
+
+- A request to the Nominatim URL with a couple of coordinates gives us the full address:
+
+```
+https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=40.420108&lon=-3.705786&zoom=18
+```
+
+```json
+{"place_id":"154055937","licence":"Data © OpenStreetMap contributors, ODbL 1.0. https:\/\/osm.org\/copyright","osm_type":"way","osm_id":"344130176","lat":"40.41985725","lon":"-3.70581199957834","place_rank":"30","category":"place","type":"square","importance":"0","addresstype":"place","name":"Plaza de Callao","display_name":"Plaza de Callao, Sol, Centro, Madrid, Área metropolitana de Madrid y Corredor del Henares, Community of Madrid, 28001, Spain","address":{"address29":"Plaza de Callao","pedestrian":"Plaza de Callao","suburb":"Sol","city_district":"Centro","city":"Madrid","county":"Área metropolitana de Madrid y Corredor del Henares","state":"Community of Madrid","postcode":"28001","country":"Spain","country_code":"es"},"boundingbox":["40.419483","40.4202199","-3.7061354","-3.705431"]}{
+  "place_id": "154055937",
+  "licence": "Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright",
+  "osm_type": "way",
+  "osm_id": "344130176",
+  "lat": "40.41985725",
+  "lon": "-3.70581199957834",
+  "place_rank": "30",
+  "category": "place",
+  "type": "square",
+  "importance": "0",
+  "addresstype": "place",
+  "name": "Plaza de Callao",
+  "display_name": "Plaza de Callao, Sol, Centro, Madrid, Área metropolitana de Madrid y Corredor del Henares, Community of Madrid, 28001, Spain",
+  "address": {
+    "address29": "Plaza de Callao",
+    "pedestrian": "Plaza de Callao",
+    "suburb": "Sol",
+    "city_district": "Centro",
+    "city": "Madrid",
+    "county": "Área metropolitana de Madrid y Corredor del Henares",
+    "state": "Community of Madrid",
+    "postcode": "28001",
+    "country": "Spain",
+    "country_code": "es"
+  },
+  "boundingbox": [
+    "40.419483",
+    "40.4202199",
+    "-3.7061354",
+    "-3.705431"
+  ]
+}
+```
+
+- A Python function that requests to a geocoder REST API for a full address:
+
+```sql
+CREATE OR REPLACE FUNCTION reverse_geocode(geocoder TEXT, lon NUMERIC, lat NUMERIC)
+    RETURNS TEXT
+AS $$
+    import requests
+
+    # Let's use the shared cache to avoid requesting the geocoder metadata
+    if geocoder in SD:
+        plan = SD[geocoder]
+    # A prepared statement from Python
+    else:
+        plan = plpy.prepare("SELECT reverse_url AS url FROM geocoders WHERE name = $1", ["text"])
+        SD[geocoder] = plan
+
+    # Execute the statement with the geoeoder param and limit to 1 result
+    rv = plpy.execute(plan, [geocoder], 1)
+    url = rv[0]['url']
+
+    # Make the request to the geocoder API
+    payload = {"lon": lon, "lat": lat, "format": "jsonv2", "zoom": 18}
+    r = requests.get(url, params=payload)
+
+    # Return the full address or nothing if not found
+    if r.status_code == 200:
+      return r.json()["display_name"]
+    else:
+      return ''
+$$ LANGUAGE plpythonu;
+```
+
+- Don't go crazy and use each language for what it's best. Let's use a regular SQL trigger procedure to automatically geocode new rows:
+
+```sql
+CREATE OR REPLACE FUNCTION fill_full_address() RETURNS trigger AS $$
+    BEGIN
+        -- NOTE we are calling the reverse_geocode Python function defined above
+        NEW.full_address := reverse_geocode('nominatim', NEW.lon, NEW.lat);
+        RETURN NEW;
+    END;
+$$ LANGUAGE plpgsql;
+```
+
+```sql
+CREATE TRIGGER fill_full_address
+BEFORE
+INSERT
+OR
+UPDATE ON locations
+FOR EACH ROW EXECUTE PROCEDURE fill_full_address();
+```
+
+- Let's INSERT a new location:
+
+```sql
+INSERT INTO locations VALUES(-3.705786, 40.420108);
+```
