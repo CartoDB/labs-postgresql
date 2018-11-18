@@ -14,7 +14,7 @@ Just open `https://betis.carto.io` and configure a CARTO account to point to you
 
 ### For the lecturers
 
-Remember to remove the exercise index if pressent.
+Remember to remove the exercise index if present.
 
 ```sql
 drop index bkmappluto_gist_centroid_idx;
