@@ -102,18 +102,18 @@ CREATE INDEX idx_scores_intarray ON students USING GIN(scores gin__int_ops);
 - unnest
 
 ```sql
-explain (analyze, verbose, costs off, buffers)
- select count(*)
-  from students
- where 90 < ANY(scores);
+EXPLAIN (analyze, verbose, costs off, buffers)
+ SELECT count(*)
+  FROM students
+ WHERE 90 < ANY(scores);
 ```
 
 ```sql
-select score, count(*)
-  from students, unnest(scores) as t(score)
-group by score
-order by count desc
-   limit 10;
+SELECT score, count(*)
+  FROM students, unnest(scores) as t(score)
+GROUP BY score
+ORDER BY count DESC
+  LIMIT 10;
 ```
 
 ### JSONB > JSON
