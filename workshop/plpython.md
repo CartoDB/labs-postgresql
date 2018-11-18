@@ -210,3 +210,11 @@ FOR EACH ROW EXECUTE PROCEDURE fill_full_address();
 ```sql
 INSERT INTO locations VALUES(-3.705786, 40.420108);
 ```
+
+```sql
+SELECT * FROM locations;
+
+    lon    |    lat    |                                                         full_address
+-----------+-----------+-------------------------------------------------------------------------------------------------------------------------------
+ -3.705786 | 40.420108 | Plaza de Callao, Sol, Centro, Madrid, Área metropolitana de Madrid y Corredor del Henares, Comunidad de Madrid, 28001, España
+ ```
