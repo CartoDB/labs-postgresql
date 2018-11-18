@@ -136,3 +136,10 @@ chmod 0600 ~/.pgpass
 # via PGPASSFILE ENV variable
 PGPASSFILE=/etc/.pgpass psql -h host -d database -U user
 ```
+
+**Running commands from shell**:
+
+```bash
+psql -U user -d database -c '\d'
+psql -U user -d database -c 'SELECT version();'
+```
