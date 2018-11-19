@@ -71,6 +71,7 @@ As you can see there is a normal index on the `name` field in case you want to t
 
 
 ```sql
+set default_text_search_config = 'pg_catalog.spanish';
 select name, tsv
   from "commitconf-01".streets,
        plainto_tsquery('YOUR QUERY') as q1
@@ -89,6 +90,7 @@ where `YOUR QUERY` can be for example:
 If you want to get unique street names and ordered by the rank result you can run this variation:
 
 ```sql
+set default_text_search_config = 'pg_catalog.spanish';
   select name,
          ts_rank_cd(s.tsv, plainto_tsquery('adolfo <-> suárez')) as rank
     from (
@@ -104,6 +106,7 @@ order by 2 desc
 Finally, if you want to get the results highlighted you may want to change the `name` by a call to `ts_headline`:
 
 ```sql
+set default_text_search_config = 'pg_catalog.spanish';
   select ts_headline(name ,plainto_tsquery('adolfo <-> suárez')) as headline,
          ts_rank_cd(s.tsv, plainto_tsquery('adolfo <-> suárez')) as rank
     from (
