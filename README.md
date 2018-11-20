@@ -1,5 +1,9 @@
 # CommitConf 2018 PostgreSQL Workshop
 
+<p style="font-size:1.5em">
+<a href="http://bit.ly/commitconf18-postgres">bit.ly/commitconf18-postgres</a>
+</p>
+
 ![](workshop/imgs/banner.png)
 
 ## Foreword
