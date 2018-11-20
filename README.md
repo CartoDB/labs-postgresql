@@ -1,4 +1,6 @@
-# PostgreSQL Workshop
+# CommitConf 2018 PostgreSQL Workshop
+
+![](workshop/imgs/banner.png)
 
 ## Foreword
 
