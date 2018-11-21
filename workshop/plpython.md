@@ -168,7 +168,7 @@ AS $$
         plan = plpy.prepare("SELECT reverse_url AS url FROM geocoders WHERE name = $1", ["text"])
         SD[geocoder] = plan
 
-    # Execute the statement with the geoeoder param and limit to 1 result
+    # Execute the statement with the geocoder param and limit to 1 result
     rv = plpy.execute(plan, [geocoder], 1)
     url = rv[0]['url']
 
