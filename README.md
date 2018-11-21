@@ -51,3 +51,8 @@ You can get access to the datasets used on this workshop on this [shared Google 
 * Natural Earth [countries](https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-0-countries/) and [populated places](https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/) by Nathaniel Vaughn Kelso et. al.
 * The streets dataset is derived from the Spanish [OpenStreetMap](https://osm.org) dump by geofabrik available [here](http://download.geofabrik.de/europe/spain.html)
 
+## Editions
+
+This workshop has been delivered at:
+
+* 2018-11-24 · [CommitConf 2018](https://2018.commit-conf.com/) · [Workshop page](https://github.com/CartoDB/labs-postgresql/tree/commitconf18)
