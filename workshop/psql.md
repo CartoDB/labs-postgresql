@@ -1,8 +1,8 @@
-## psql
+# psql
 
 Official [documentation](https://www.postgresql.org/docs/10/app-psql.html)
 
-### psql short cheatsheet
+## psql short cheatsheet
 
 | Command | Description |
 | - | - |
@@ -25,7 +25,7 @@ Official [documentation](https://www.postgresql.org/docs/10/app-psql.html)
 | `\ef function name` | Edit `function name` on editor |
 | `\q` | Quit psql |
 
-### Config .psqlrc
+## Config .psqlrc
 
 ```bash
 # system wide
@@ -43,9 +43,9 @@ touch ~/.psqlrc-9.1
 touch ~/.psqlrc-9.3
 ```
 
-**A .psqlrc example**
+### A .psqlrc example
 
-```
+```text
 \set QUIET 1
 
 -- %M refers to the database server's hostname -- is "[local]" if the connection is over a Unix domain socket
@@ -100,7 +100,7 @@ touch ~/.psqlrc-9.3
 \unset QUIET
 ```
 
-### Open a session
+## Open a session
 
 ```bash
 # as postgres
