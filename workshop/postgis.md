@@ -62,13 +62,40 @@ Try to visualize these queries to understand three different types of geometries
 
 How to get Airbnb listings with 3 or more bedrooms at less than 200 meters of L3?
 
+```sql
+with metro_lines as (
+  SELECT
+    name,
+    row_number() over() as cartodb_id,
+    ST_Buffer(
+        the_geom::geography,
+        200
+      )::geometry as the_geom,
+    ST_Transform(
+      ST_Buffer(
+        the_geom::geography,
+        200
+      )::geometry,
+    3857) As the_geom_webmercator
+  FROM "carto-workshops".lineas_madrid
+  )
+
+select x.*,
+y.cartodb_id as joined
+from "carto-workshops".listings_madrid x
+left join metro_lines y
+on st_intersects(x.the_geom, y.the_geom)
+where x.bedrooms>= 3 AND y.name = 'L3'
 ```
+
+
+```sql
 SELECT a.*
 FROM "carto-workshops".listings_madrid A,
      "carto-workshops".lineas_madrid B
 WHERE ST_DWithin(a.the_geom::geography, B.the_geom::geography, 200)
   AND B.name = 'L3'
-  AND A.bathrooms >= 3
+  AND A.bedrooms >= 3
 ```
 
 ![](imgs/dwithin.png)
