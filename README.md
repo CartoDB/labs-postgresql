@@ -18,15 +18,15 @@ Authors:
 ## Contents
 
 * Workshop set up
-* [plsql](./workshop/psql.md) tricks demo
-* [Visual EXPLAINs](./workshop/pev.md) exercise
-* [PostGIS](./workshop/postgis.md) exercise
-* [Expression Based Indexes](./workshop/indexes-on-expressions.md) exercise
-* [Full Text Search](./workshop/full-text-search.md) exercise
-* [PL/Python - Python Procedural Language](./workshop/plpython.md) demo
-* [Non Relational Data](./workshop/non-relational.md) exercise
-* [Declarative Table Partitioning](./workshop/partitioning.md) exercise
-* [TOAST](./workshop/toast.md) exercise
+* [plsql](https://github.com/CartoDB/labs-postgresql/blob/master/workshop/psql.md) tricks demo
+* [Visual EXPLAINs](https://github.com/CartoDB/labs-postgresql/blob/master/workshop/pev.md) exercise
+* [PostGIS](https://github.com/CartoDB/labs-postgresql/blob/master/workshop/postgis.md) exercise
+* [Expression Based Indexes](https://github.com/CartoDB/labs-postgresql/blob/master/workshop/indexes-on-expressions.md) exercise
+* [Full Text Search](https://github.com/CartoDB/labs-postgresql/blob/master/workshop/full-text-search.md) exercise
+* [PL/Python - Python Procedural Language](https://github.com/CartoDB/labs-postgresql/blob/master/workshop/plpython.md) demo
+* [Non Relational Data](https://github.com/CartoDB/labs-postgresql/blob/master/workshop/non-relational.md) exercise
+* [Declarative Table Partitioning](https://github.com/CartoDB/labs-postgresql/blob/master/workshop/partitioning.md) exercise
+* [TOAST](https://github.com/CartoDB/labs-postgresql/blob/master/workshop/toast.md) exercise
 
 ## Further reading
 
