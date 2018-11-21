@@ -37,7 +37,7 @@ Apart from those topics and the infinite number of resources you'll find out the
 
 * [CARTO Engineering blog](https://carto.com/blog/inside)
 * [Paul Ramsey's blog](http://blog.cleverelephant.ca/), mostly about PostGIS
-* Abel's excellent [PostGIS/Postgre tips & tricks](https://abelvm.github.io/sql/sql-tricks/)
+* Abel's excellent [PostGIS/PostgreSQL tips & tricks](https://abelvm.github.io/sql/sql-tricks/)
 * [Is PostgreSQL good enough?](http://renesd.blogspot.com/2017/02/is-postgresql-good-enough.html?m=1), great write up on many of the nice features we covered
 * Commit 2016 talk: [the ten most powerful queries](https://www.youtube.com/watch?v=ZLvT8lQit80) (Spanish)
 * [Modern SQL](https://modern-sql.com/), you probably already knew this one :smile:
