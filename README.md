@@ -4,7 +4,7 @@
 <a href="http://bit.ly/commitconf18-postgres">bit.ly/commitconf18-postgres</a>
 </p>
 
-![](workshop/imgs/banner.png)
+![](./banner.png)
 
 ## Foreword
 
