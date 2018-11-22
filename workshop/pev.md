@@ -22,6 +22,8 @@ Pev is designed to make Postgres query plans easier to grok. It displays a plan 
 
 </blockquote>
 
+**Note**: Unfortunately, the project looks [abandoned](https://github.com/AlexTatiyants/pev/issues/42) and with Postgres versions 9.6 and above may return wronk plan durations for parallel executions ([issue](https://github.com/AlexTatiyants/pev/issues/26), [issue](https://github.com/AlexTatiyants/pev/issues/29)). Still we find it useful to display meaningfully complex plans.
+
 ## Exercise
 
 You can use PEV with any of the queries we are using on this workshop we will use here one coming from the `TOAST` exercise as it involves a `JOIN` and is a bit more interesting.
