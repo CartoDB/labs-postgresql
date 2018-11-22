@@ -33,7 +33,6 @@ You can also run more detailed queries
 * `lugar <3> mancha` even a defined number of words apart
 * `!caballero & mucho & (rocín <-> flacos)` and combinations
 
-
 ## Query performance
 
 To demonstrate the performance of this data structure, and following the guidelines described on this [article](https://blog.lateral.io/2015/05/full-text-search-in-milliseconds-with-postgresql/) we've set up a `streets` table with the centroids and names of the Spanish roads and streets coming from [OSM](https://osm.org) database. That's a three million records table with the following structure
@@ -69,7 +68,6 @@ To demonstrate the performance of this data structure, and following the guideli
 
 As you can see there is a normal index on the `name` field in case you want to try searching on that field directly, but also an index on the `tsv` field so you can run queries like this one:
 
-
 ```sql
 set default_text_search_config = 'pg_catalog.spanish';
 select name, tsv
@@ -83,7 +81,6 @@ where `YOUR QUERY` can be for example:
 * `lola <-> flores`
 * `leyenda <-> zelda`
 * ...
-`
 
 **Note**: you may get repeated rows because OSM data is per street section, not the full one.
 

@@ -1,18 +1,20 @@
-## PL/Python
+# PL/Python
 
 - Official [documentation](https://www.postgresql.org/docs/10/plpython-python23.html)
 
 - Installation (depends on the Postgresql distribution)
-```
-sudo apt-get install postgresql-plpython-10.1
+
+```sh
+$ sudo apt-get install postgresql-plpython-10.1
 # must be superuser to create procedural language "plpythonu"
-sudo -Hnu postgres psql -c "ALTER USER aromeu WITH SUPERUSER"
-sudo -Hnu postgres psql -c "CREATE EXTENSION plpythonu"
+$ sudo -Hnu postgres psql -c "ALTER USER aromeu WITH SUPERUSER"
+$ sudo -Hnu postgres psql -c "CREATE EXTENSION plpythonu"
 # or for a certain DB:
-sudo -Hnu postgres psql $dbname -c "CREATE EXTENSION plpythonu"
+$ sudo -Hnu postgres psql $dbname -c "CREATE EXTENSION plpythonu"
 ```
 
 - Or you can trust the language by default:
+
 ```sql
 SELECT * FROM pg_language;
  lanname  | lanowner | lanispl | lanpltrusted | lanplcallfoid | laninline | lanvalidator | lanacl
@@ -68,7 +70,6 @@ $$ LANGUAGE plpythonu;
 
 _The cleaner solution would be to set PYTHONPATH for the postgresql server process._
 
-
 ```sh
 mkdir -p /tmp/foo
 cat <<EOF > /tmp/foo/foo.py
@@ -90,7 +91,7 @@ $$ LANGUAGE plpythonu;
 select foo_module();
 ```
 
-### Demo
+## Demo
 
 Create a trigger to calculate the full address of a pair of coordinates.
 
@@ -112,7 +113,7 @@ CREATE TABLE locations(lon NUMERIC, lat NUMERIC, full_address TEXT);
 
 - A request to the Nominatim URL with a couple of coordinates gives us the full address:
 
-```
+```text
 https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=40.420108&lon=-3.705786&zoom=18
 ```
 
