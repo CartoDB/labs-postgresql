@@ -10,10 +10,23 @@
 
 This repository contains a number of exercises about some not so well-knonw PostgreSQL features. It may be interesting for application developers and database administrators.
 
-Authors:
+### Authors
 
 * [Alberto Romeu](https://github.com/alrocar) · Full Stack developer at CARTO
 * [Jorge Sanz](https://github.com/jsanz) · Solutions engineer at CARTO
+
+
+### About CARTO
+
+![](https://github.com/CartoDB/labs-postgresql/raw/master/workshop/imgs/logo_CARTO_positive_90.png)
+
+Founded in 2012 by a team of experts in geospatial development, big data analytics, and visualization techniques, [CARTO](https://carto.com) is based in New York City and Spain, with additional locations in Washington DC, and Estonia. CARTO has a team of 100 employees, a portfolio of 1,200 customers including BBVA, BCG, NYC, and Twitter and more than 200,000 users over the globe. The company is backed by investors such as Accel and Salesforce Ventures.
+
+[CARTO](https://carto.com) leads the world of location intelligence, empowering any organization and individual to discover and predict key insights through location data. With CARTO’s intuitive location intelligence platform, analysts and developers build self-service location based apps that help optimize operational performance, strategic investments, and everyday decisions.
+
+### We are hiring!!
+
+We are looking for a **UX Designer** for our **Madrid** office, more details [here](https://carto.workable.com/j/3103A90892).
 
 ## Contents
 
