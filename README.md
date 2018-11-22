@@ -4,7 +4,7 @@
 <a href="http://bit.ly/commitconf18-postgres">bit.ly/commitconf18-postgres</a>
 </p>
 
-![](./banner.png)
+![commit banner](./banner.png)
 
 ## Foreword
 
@@ -18,22 +18,23 @@ Authors:
 ## Contents
 
 * Workshop set up
-* [plsql](https://github.com/CartoDB/labs-postgresql/blob/master/workshop/psql.md) tricks demo
-* [Visual EXPLAINs](https://github.com/CartoDB/labs-postgresql/blob/master/workshop/pev.md) exercise
-* [PostGIS](https://github.com/CartoDB/labs-postgresql/blob/master/workshop/postgis.md) exercise
-* [Expression Based Indexes](https://github.com/CartoDB/labs-postgresql/blob/master/workshop/indexes-on-expressions.md) exercise
-* [Full Text Search](https://github.com/CartoDB/labs-postgresql/blob/master/workshop/full-text-search.md) exercise
-* [PL/Python - Python Procedural Language](https://github.com/CartoDB/labs-postgresql/blob/master/workshop/plpython.md) demo
-* [Non Relational Data](https://github.com/CartoDB/labs-postgresql/blob/master/workshop/non-relational.md) exercise
-* [Declarative Table Partitioning](https://github.com/CartoDB/labs-postgresql/blob/master/workshop/partitioning.md) exercise
-* [TOAST](https://github.com/CartoDB/labs-postgresql/blob/master/workshop/toast.md) exercise
+* [plsql](./workshop/psql.md) tricks demo
+* [Visual EXPLAINs](./workshop/pev.md) exercise
+* [PostGIS](./workshop/postgis.md) exercise
+* [Expression Based Indexes](./workshop/indexes-on-expressions.md) exercise
+* [Full Text Search](./workshop/full-text-search.md) exercise
+* [PL/Python - Python Procedural Language](./workshop/plpython.md) demo
+* [Non Relational Data](./workshop/non-relational.md) exercise
+* [Declarative Table Partitioning](./workshop/partitioning.md) exercise
+* [TOAST](./workshop/toast.md) exercise
 
 ## Further reading
 
 When we brainstormed this workshop we came accross other topics that we decided to not include, this is the list of topics and some further reading resources we reserve for future editions of the workshop where they may be included.
 
 * [Foreign Data Wrappers](https://www.postgresql.org/docs/current/postgres-fdw.html)
-* [`LISTEN`](https://www.postgresql.org/docs/current/sql-listen.html) & [`NOTIFY`](https://www.postgresql.org/docs/current/sql-notify.html) 
+* [`LISTEN`](https://www.postgresql.org/docs/current/sql-listen.html) & [`NOTIFY`](https://www.postgresql.org/docs/current/sql-notify.html)
+* Using ['RETURNING`](https://www.postgresql.org/docs/current/dml-returning.html) to get data from modified rows
 * [Window functions](https://www.postgresql.org/docs/current/tutorial-window.html)
 * Continuous archiving of Postgres operations with [wal-e](https://github.com/wal-e/wal-e)
 * Table [inheritance](https://www.postgresql.org/docs/current/ddl-inherit.html)
@@ -48,7 +49,6 @@ Apart from those topics and the infinite number of resources you'll find out the
 * Commit 2016 talk: [the ten most powerful queries](https://www.youtube.com/watch?v=ZLvT8lQit80) (Spanish)
 * [Modern SQL](https://modern-sql.com/), you probably already knew this one :smile:
 
-
 ## Data
 
 You can get access to the datasets used on this workshop on this [shared Google Drive folder](https://drive.google.com/drive/folders/1xx8jCt_JgYq5g1WDDvrr6nmHPqo9CWXb?usp=sharing). They are mostly stored in a format called `Geopackage`, which is a customized SQLite database you can manage with GIS software.
@@ -56,4 +56,3 @@ You can get access to the datasets used on this workshop on this [shared Google 
 * [Brooklyn MapPLUTO building footprints](https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page) by the NYC Planning department
 * Natural Earth [countries](https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-0-countries/) and [populated places](https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/) by Nathaniel Vaughn Kelso et. al.
 * The streets dataset is derived from the Spanish [OpenStreetMap](https://osm.org) dump by geofabrik available [here](http://download.geofabrik.de/europe/spain.html)
-
