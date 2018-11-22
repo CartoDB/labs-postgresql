@@ -61,9 +61,6 @@ touch ~/.psqlrc-9.3
 -- PROMPT2 is used when unfinished queries (i.e. you miss the semicolon)
 \set PROMPT2 '[more] %R > '
 
--- Colors
-\set PROMPT1 '%M:%[%033[1;31m%]%>%[%033[0m%] %n@%/%R%#%x '
-
 -- NULLs
 \pset null '[null]'
 
