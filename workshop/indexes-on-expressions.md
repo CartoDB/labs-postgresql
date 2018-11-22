@@ -4,6 +4,8 @@
 
 Expression-based index are just as regular field-based indexes but working on the execution of an arbitrary expression. If your application is using them on `WHERE` or `GROUP BY` clauses you may want to set up them to speed their execution.
 
+**Note**: To be able to create this type of indexes your function needs to be marked as `IMMUTABLE`, otherwise their results would depend on the client connected to the database. This is the case for functions that are dependant of the locale settings (time and time zone conversions, currency, etc).
+
 ## Set up
 
 Just open `https://betis.carto.io` and configure a CARTO account to point to your `commitconf-XX` user and check that the table `bkmappluto` exists and has the three default indexes:
@@ -68,7 +70,7 @@ Planning time: 0.109 ms
 Execution time: 253.985 ms
 ```
 
-This query runs in 254 milliseconds, which is almost **20 times** slower.
+This query runs in 254 milliseconds, which is almost **20 times** slower, even it paralellizes the sequential scan on the table.
 
 ### Create the index over the function
 
@@ -102,13 +104,9 @@ Planning time: 0.130 ms
 Execution time: 37.802 ms
 ```
 
-Now the query runs in 37 milliseconds, an almost 7x improvement.
+Now the query uses the `bkmappluto_gist_centroid_idx` index and runs in 37 milliseconds, an almost **7x** improvement.
 
 ## Other use cases
 
 * Using casts on your filter to convert between strings and numbers: `where rooms::int = 3`
-* Case insesitive queries where you use `lower(name) = "peter"`
-
-## Note
-
-To be able to create this type of indexes your function call needs to bemarked as `IMMUTABLE`, otherwise their results would depend on the client connected to the database. This is the case for functions that are dependant of the locale settings (time and time zone conversions, currency, etc).
+* Case insensitive queries where you use `lower(name) = "peter"`
