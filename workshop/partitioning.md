@@ -53,7 +53,7 @@ tablesample system(20)
 
 We can run this query to check the size of the different partitions.
 
-```
+```sql
 select * from (
   select count(*) as rows, '1' as part from reviews_part_1 union
   select count(*) as rows, '2' as part from reviews_part_2 union
@@ -74,11 +74,10 @@ explain analyze
 group by 2
 ```
 
-
 A final note about partitioning with Postgres 11. There's been many improvements on the last release for this feature like:
 
 * we can have a `DEFAULT` partition
-* creating an index on the main table will automatically create them on the partitions. 
+* creating an index on the main table will automatically create them on the partitions.
 * we can run `UPDATE` on partition rows and they will be moved if needed
 * partitions by hash
 

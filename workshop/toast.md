@@ -1,4 +1,4 @@
-#  Uncompressed TOAST
+# Uncompressed TOAST
 
 From [TOAST documentation](https://www.postgresql.org/docs/current/storage-toast.html):
 
@@ -117,6 +117,6 @@ Planning time: 21.391 ms
 Execution time: 2786.209 ms
 ```
 
-![](imgs/toast-post.png)
+![toast-post](imgs/toast-post.png)
 
 We moved from 14.7 seconds to 2.8, that's a **5x** improvement at the cost of doubling the space used to store the polygons table.

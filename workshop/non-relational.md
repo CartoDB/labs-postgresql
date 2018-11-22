@@ -1,16 +1,16 @@
-## Non-relational capabilities
+# Non-relational capabilities
 
 - Array
 - JSONB > JSON
 - HStore
 - Range types, Geometry, XML, etc.
 
-### Array
+## Array
 
-**Official docs**
+Official docs:
 
-- https://www.postgresql.org/docs/10/arrays.html
-- https://www.postgresql.org/docs/10/functions-array.html
+- <https://www.postgresql.org/docs/10/arrays.html>
+- <https://www.postgresql.org/docs/10/functions-array.html>
 
 Useful for lists of values
 
@@ -40,8 +40,7 @@ VALUES ('student_name',
         array ['(555)480-9941','(555)738-3707']);
 ```
 
-**Indexing**
-
+### Indexing
 
 ```sql
 CREATE INDEX idx_scores ON students USING GIN(scores); -- GIN Index (array)
@@ -54,7 +53,7 @@ Special operators -> `<@, @>, =, &&`
 EXPLAIN ANALYZE SELECT name, contacts FROM students WHERE contacts @> '{(555)738-3707}';
 ```
 
-```
+```text
                                 QUERY PLAN
 ---------------------------------------------------------------------------
  Bitmap Heap Scan on students  (cost=8.01..12.02 rows=1 width=72)
@@ -67,7 +66,7 @@ EXPLAIN ANALYZE SELECT name, contacts FROM students WHERE contacts @> '{(555)738
 SELECT name, scores FROM students WHERE scores @> '{97}';
 ```
 
-```
+```text
                         QUERY PLAN
 -----------------------------------------------------------
  Seq Scan on students  (cost=0.00..19.00 rows=1 width=234)
@@ -82,7 +81,7 @@ CREATE EXTENSION intarray;
 CREATE INDEX idx_scores_intarray ON students USING GIN(scores gin__int_ops);
 ```
 
-```
+```text
                                     QUERY PLAN
 ----------------------------------------------------------------------------------
  Bitmap Heap Scan on students  (cost=8.00..12.02 rows=1 width=234)
@@ -91,7 +90,7 @@ CREATE INDEX idx_scores_intarray ON students USING GIN(scores gin__int_ops);
          Index Cond: (scores @> '{97}'::integer[])
 ```
 
-**Functions**
+### Functions
 
 - Accessor [] (from 1 to n, supports ranges)
 - array_dims
@@ -116,12 +115,12 @@ ORDER BY count DESC
   LIMIT 10;
 ```
 
-### JSONB > JSON
+## JSONB > JSON
 
-**Official docs**
+Official docs:
 
-- https://www.postgresql.org/docs/10/datatype-json.html
-- https://www.postgresql.org/docs/10/functions-json.html
+- <https://www.postgresql.org/docs/10/datatype-json.html>
+- <https://www.postgresql.org/docs/10/functions-json.html>
 
 When to use JSONB
 
@@ -151,7 +150,7 @@ CREATE TABLE reviews(review jsonb);
 VACUUM ANALYZE reviews;
 ```
 
-**Data access**
+### Data access
 
 ```sql
 CREATE INDEX on reviews ((review #>> '{product,category}'));
@@ -164,6 +163,9 @@ SELECT
 FROM reviews
 WHERE review #>> '{product,category}' = 'Fitness & Yoga'
 GROUP BY 1 ORDER BY 2;
+```
+
+```text
                        title                       |        avg
 ---------------------------------------------------+--------------------
  Kathy Smith - New Yoga Challenge                  | 1.6666666666666667
@@ -193,13 +195,13 @@ WHERE review @> '{"product": {"category": "Fitness & Yoga"}}'
 GROUP BY 1 ORDER BY 2;
 ```
 
-Smaller and faster INDEX (better for @>)
+Smaller and faster INDEX (better for `@>`)
 
 ```sql
 CREATE INDEX on reviews USING GIN (review jsonb_path_ops);
 ```
 
-**Constraints**
+### Constraints
 
 ```sql
 ALTER TABLE reviews
@@ -210,27 +212,27 @@ INSERT INTO reviews
 VALUES ('{"review": {"rating": 10}}');
 ```
 
-### HStore
+## HStore
 
 Non-hierarchical key-value strings.
 
 Used extensively in OpenStreetMap.
 
-**Official docs**
+Official docs:
 
-- https://www.postgresql.org/docs/10/hstore.html
+- <https://www.postgresql.org/docs/10/hstore.html>
 
-***JSONB vs HStore***
+JSONB vs HStore
 
 ![http://mateuszmarchel.com/blog/2016/06/29/jsonb-vs-hstore-performance-battle/](http://mateuszmarchel.com/images/table_big2.png)
 
-### References
+## References
 
-- https://momjian.us/main/writings/pgsql/non-relational.pdf
-- https://www.citusdata.com/blog/2016/07/14/choosing-nosql-hstore-json-jsonb/
-- http://www.craigkerstiens.com/2013/07/03/hstore-vs-json/
-- https://blog.2ndquadrant.com/jsonb-type-performance-postgresql-9-4/
-- https://www.enterprisedb.com/es/blog/illustration-jsonb-capabilities-postgres-95
-- https://www.compose.com/articles/faster-operations-with-the-jsonb-data-type-in-postgresql/
-- https://www.compose.com/articles/take-a-dip-into-postgresql-arrays/
-- https://tapoueh.org/blog/2018/04/postgresql-data-types-arrays/
+- <https://momjian.us/main/writings/pgsql/non-relational.pdf>
+- <https://www.citusdata.com/blog/2016/07/14/choosing-nosql-hstore-json-jsonb/>
+- <http://www.craigkerstiens.com/2013/07/03/hstore-vs-json/>
+- <https://blog.2ndquadrant.com/jsonb-type-performance-postgresql-9-4/>
+- <https://www.enterprisedb.com/es/blog/illustration-jsonb-capabilities-postgres-95>
+- <https://www.compose.com/articles/faster-operations-with-the-jsonb-data-type-in-postgresql/>
+- <https://www.compose.com/articles/take-a-dip-into-postgresql-arrays/>
+- <https://tapoueh.org/blog/2018/04/postgresql-data-types-arrays/>

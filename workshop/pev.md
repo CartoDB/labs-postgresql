@@ -2,8 +2,7 @@
 
 Checking execution plans is probably one of the first things you usually do to understand why a query is taking too much time. On that regard we highly recommend this guide from Dalibo French experts:
 
-https://www.dalibo.org/_media/understanding_explain.pdf
-
+<https://www.dalibo.org/_media/understanding_explain.pdf>
 
 Postgres provides detailed information on how a query is executed, how much time it actually takes (if you use the `ANALYZE` option), when indexes are used, if sorts are made in memory or it had to go to the hard disk and so on.
 
@@ -12,6 +11,7 @@ With complex queries the execution plan can be hard to read, its tree nature can
 From the [Postgres EXPLAIN visualizer](http://tatiyants.com/pev/#/about) website:
 
 <blockquote>
+
 Pev is designed to make Postgres query plans easier to grok. It displays a plan as a tree, with each node representing a step that takes in a row set and produces another. Pev can show you a number of useful things:
 
 * overall plan stats
@@ -19,7 +19,7 @@ Pev is designed to make Postgres query plans easier to grok. It displays a plan 
 * explanation of what each node does
 * outlier nodes
 * graph of a specific metric (like cost) for all nodes
-* for some nodes, highlighted part of the query which corresponds to the node
+
 </blockquote>
 
 ## Exercise
@@ -37,24 +37,22 @@ Using any postgres client instead of the normal `EXPLAIN ANALYZE` you run a cust
 group by c.name;
 ```
 
-Then visit http://tatiyants.com/pev/#/plans/new and paste the output of the `explain` along with the actual query:
+Then visit <http://tatiyants.com/pev/#/plans/new> and paste the output of the `explain` along with the actual query:
 
-![](imgs/pev.png)
+![pev](imgs/pev.png)
 
 The resulting dashboard shows the execution and planning time along with a tree of the execution nodes, you can expand them and get plenty of details of each node.
 
-![](imgs/pev2.png)
-
+![pev2](imgs/pev2.png)
 
 ## Other examples
 
 A few examples of resulting execution trees:
 
-![](imgs/pev_ex1.png)
+![example 1](imgs/pev_ex1.png)
 
-![](imgs/pev_ex2.png)
+![example 2](imgs/pev_ex2.png)
 
-![](imgs/pev_ex3.png)
+![example 3](imgs/pev_ex3.png)
 
-![](imgs/pev_ex4.png)
-
+![example 4](imgs/pev_ex4.png)

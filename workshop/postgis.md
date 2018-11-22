@@ -1,8 +1,8 @@
-## PostGIS
+# PostGIS
 
 In this section you’ll have the chance to take a sneak peek of [PostGIS](http://postgis.net/docs/).
 
-### Overview
+## Overview
 
 PostGIS is a PostgreSQL extension that includes:
 
@@ -10,13 +10,13 @@ PostGIS is a PostgreSQL extension that includes:
 - [indexing](https://postgis.net/docs/using_postgis_dbmanagement.html#idm2246) on those data types
 - a bunch of [functions](https://postgis.net/docs/reference.html) to perform spatial analysis
 
-**Creating a spatial table**
+Creating a spatial table:
 
 ```sql
 CREATE TABLE roads (ID serial, ROAD_NAME text, the_geom geometry(POINT, 4326) );
 ```
 
-**Data ingestion**
+Data ingestion:
 
 ```sql
 -- geometry as WKT
@@ -24,13 +24,13 @@ INSERT INTO roads (id, road_name, the_geom)
   VALUES (1, 'Jeff Rd', ST_GeomFromText('POINT(-126.4 45.32)', 4326));
 ```
 
-### Set up
+## Set up
 
 For this workshop we will use [CARTO](https://carto.com/) as a convenient way to interact with PostGIS.
 
 Since PostGIS is about storing, querying and analyzing geospatial information we will use [CARTO Franchise](https://franchise.carto.io) as a tool to write and share CARTO PostGIS notebooks.
 
-- Go to https://franchise.carto.io and introduce your credentials:
+- Go to <https://franchise.carto.io> and introduce your credentials:
   - hostname: `carto.com`
   - username: `commitconf-xx`
   - API key: `type your_api_key`
@@ -52,7 +52,7 @@ Some tables you have available to you from this account are:
 - `"carto-workshops".lineas_madrid`: Madrid metro lines
 - `"carto-workshops".listings_madrid`: Madrid Airbnb listings
 
-### Examples
+## Examples
 
 Try to visualize these queries to understand three different types of geometries:
 
@@ -88,7 +88,6 @@ on st_intersects(x.the_geom, y.the_geom)
 where x.bedrooms>= 3 AND y.name = 'L3'
 ```
 
-
 ```sql
 SELECT a.*
 FROM "carto-workshops".listings_madrid A,
@@ -98,6 +97,6 @@ WHERE ST_DWithin(a.the_geom::geography, B.the_geom::geography, 200)
   AND A.bedrooms >= 3
 ```
 
-![](imgs/dwithin.png)
+![ST_DWithin](imgs/dwithin.png)
 
 Continue with the examples [here](https://carto.com/help/working-with-data/spatial-sql/#sql-that-applies-to-all-geometries)
