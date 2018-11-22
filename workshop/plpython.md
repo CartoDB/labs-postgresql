@@ -64,7 +64,7 @@ AS $$
 $$ LANGUAGE plpythonu;
 ```
 
-- Subtransactions
+- [Subtransactions](https://www.postgresql.org/docs/9.1/plpython-subtransaction.html)
 
 - Modules
 
