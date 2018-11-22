@@ -28,7 +28,7 @@ When we brainstormed this workshop we came accross other topics that we decided 
 
 * [Foreign Data Wrappers](https://www.postgresql.org/docs/current/postgres-fdw.html)
 * [`LISTEN`](https://www.postgresql.org/docs/current/sql-listen.html) & [`NOTIFY`](https://www.postgresql.org/docs/current/sql-notify.html)
-* Using ['RETURNING`](https://www.postgresql.org/docs/current/dml-returning.html) to get data from modified rows
+* Using [`RETURNING`](https://www.postgresql.org/docs/current/dml-returning.html) to get data from modified rows
 * [Window functions](https://www.postgresql.org/docs/current/tutorial-window.html)
 * Continuous archiving of Postgres operations with [wal-e](https://github.com/wal-e/wal-e)
 * Table [inheritance](https://www.postgresql.org/docs/current/ddl-inherit.html)
