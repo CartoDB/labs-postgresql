@@ -2,7 +2,7 @@
 
 ## Foreword
 
-This repository contains a number of exercises about some not so well-knonw PostgreSQL features. It may be interesting for application developers and database administrators.
+This repository contains a number of exercises about some not so well-known PostgreSQL features. It may be interesting for application developers and database administrators.
 
 Authors:
 
@@ -12,7 +12,7 @@ Authors:
 ## Contents
 
 * Workshop set up
-* [plsql](./workshop/psql.md) tricks demo
+* [psql](./workshop/psql.md) tricks demo
 * [Visual EXPLAINs](./workshop/pev.md) exercise
 * [PostGIS](./workshop/postgis.md) exercise
 * [Expression Based Indexes](./workshop/indexes-on-expressions.md) exercise
