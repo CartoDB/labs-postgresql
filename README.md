@@ -27,7 +27,8 @@ Authors:
 When we brainstormed this workshop we came accross other topics that we decided to not include, this is the list of topics and some further reading resources we reserve for future editions of the workshop where they may be included.
 
 * [Foreign Data Wrappers](https://www.postgresql.org/docs/current/postgres-fdw.html)
-* [`LISTEN`](https://www.postgresql.org/docs/current/sql-listen.html) & [`NOTIFY`](https://www.postgresql.org/docs/current/sql-notify.html) 
+* [`LISTEN`](https://www.postgresql.org/docs/current/sql-listen.html) & [`NOTIFY`](https://www.postgresql.org/docs/current/sql-notify.html)
+* Using ['RETURNING`](https://www.postgresql.org/docs/current/dml-returning.html) to get data from modified rows
 * [Window functions](https://www.postgresql.org/docs/current/tutorial-window.html)
 * Continuous archiving of Postgres operations with [wal-e](https://github.com/wal-e/wal-e)
 * Table [inheritance](https://www.postgresql.org/docs/current/ddl-inherit.html)
@@ -41,7 +42,6 @@ Apart from those topics and the infinite number of resources you'll find out the
 * [Is PostgreSQL good enough?](http://renesd.blogspot.com/2017/02/is-postgresql-good-enough.html?m=1), great write up on many of the nice features we covered
 * Commit 2016 talk: [the ten most powerful queries](https://www.youtube.com/watch?v=ZLvT8lQit80) (Spanish)
 * [Modern SQL](https://modern-sql.com/), you probably already knew this one :smile:
-
 
 ## Data
 
