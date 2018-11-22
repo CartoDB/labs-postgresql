@@ -22,7 +22,7 @@ Pev is designed to make Postgres query plans easier to grok. It displays a plan 
 
 </blockquote>
 
-**Note**: Unfortunately, the project looks [abandoned](https://github.com/AlexTatiyants/pev/issues/42) and with Postgres versions 9.6 and above may return wronk plan durations for parallel executions ([issue](https://github.com/AlexTatiyants/pev/issues/26), [issue](https://github.com/AlexTatiyants/pev/issues/29)). Still we find it useful to display meaningfully complex plans.
+**Note**: Unfortunately, the project looks [abandoned](https://github.com/AlexTatiyants/pev/issues/42) and with Postgres versions 9.6 and above may return wrong plan durations for parallel executions ([issue](https://github.com/AlexTatiyants/pev/issues/26), [issue](https://github.com/AlexTatiyants/pev/issues/29)). Still we find it useful to display meaningfully complex plans.
 
 ## Exercise
 
