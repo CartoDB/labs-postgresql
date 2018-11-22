@@ -9,7 +9,7 @@ This repository contains a number of exercises about some not so well-known Post
 * [Alberto Romeu](https://github.com/alrocar) · Full Stack developer at CARTO
 * [Jorge Sanz](https://github.com/jsanz) · Solutions engineer at CARTO
 
-## About CARTO
+### About CARTO
 
 ![](https://github.com/CartoDB/labs-postgresql/raw/master/workshop/imgs/logo_CARTO_positive_90.png)
 
