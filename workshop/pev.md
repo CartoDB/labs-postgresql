@@ -33,8 +33,8 @@ Using any postgres client instead of the normal `EXPLAIN ANALYZE` you run a cust
 ```sql
  EXPLAIN (ANALYZE, COSTS, VERBOSE, BUFFERS, FORMAT JSON)
   select count(*), c.name
-    from countries c
-    join places p
+    from "commitconf-01".ne_10m_admin_0_countries c
+    join "commitconf-01".ne_10m_populated_places p
       on ST_Intersects(c.the_geom, p.the_geom)
 group by c.name;
 ```
