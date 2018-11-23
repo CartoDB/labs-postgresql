@@ -206,15 +206,15 @@ UPDATE ON locations
 FOR EACH ROW EXECUTE PROCEDURE fill_full_address();
 ```
 
-- Let's INSERT a new location:
+- Let's INSERT a new location getting in the same execution the result of the trigger using [`RETURNING`](https://www.postgresql.org/docs/current/dml-returning.html):
 
 ```sql
-INSERT INTO locations VALUES(-3.705786, 40.420108);
+INSERT INTO locations 
+     VALUES (-3.705786, 40.420108) 
+  RETURNING lon, lat, full_address;
 ```
 
-```sql
-SELECT * FROM locations;
-
+```text
     lon    |    lat    |                                                         full_address
 -----------+-----------+-------------------------------------------------------------------------------------------------------------------------------
  -3.705786 | 40.420108 | Plaza de Callao, Sol, Centro, Madrid, Área metropolitana de Madrid y Corredor del Henares, Comunidad de Madrid, 28001, España
