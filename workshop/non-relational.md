@@ -90,7 +90,7 @@ CREATE INDEX idx_scores_intarray ON students USING GIN(scores gin__int_ops);
          Index Cond: (scores @> '{97}'::integer[])
 ```
 
-### Functions
+### [Functions](https://www.postgresql.org/docs/10/functions-array.html)
 
 - Accessor [] (from 1 to n, supports ranges)
 - array_dims
