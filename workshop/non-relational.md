@@ -138,6 +138,8 @@ When to use JSONB over Mongo
 - Constraints, JOINs, transactions, operational database, etc.
 - Team skills
 
+How we loaded the origin table:
+
 ```bash
 cd tmp
 wget https://github.com/gtmanfred/pg_shard_example/raw/master/customer_reviews_nested_1998.json.gz
@@ -150,17 +152,25 @@ CREATE TABLE reviews(review jsonb);
 VACUUM ANALYZE reviews;
 ```
 
+For the exercise:
+
+```sql
+create table review_sample as select *
+       from "commitconf-01".reviews
+tablesample system(20);
+```
+
 ### Data access
 
 ```sql
-CREATE INDEX on reviews ((review #>> '{product,category}'));
+CREATE INDEX on review_sample ((review #>> '{product,category}'));
 ```
 
 ```sql
 SELECT
     review #>> '{product,title}' AS title,
     avg((review #>> '{review,rating}')::int)
-FROM reviews
+FROM review_sample
 WHERE review #>> '{product,category}' = 'Fitness & Yoga'
 GROUP BY 1 ORDER BY 2;
 ```
@@ -178,7 +188,7 @@ GROUP BY 1 ORDER BY 2;
 ```
 
 ```sql
-CREATE INDEX on reviews USING GIN (review);
+CREATE INDEX on review_sample USING GIN (review);
 ```
 
 - JSON @> JSON is a subset
@@ -190,7 +200,7 @@ CREATE INDEX on reviews USING GIN (review);
 SELECT
     review #>> '{product,title}' AS title,
     avg((review #>> '{review,rating}')::int)
-FROM reviews
+FROM review_sample
 WHERE review @> '{"product": {"category": "Fitness & Yoga"}}'
 GROUP BY 1 ORDER BY 2;
 ```
@@ -198,17 +208,17 @@ GROUP BY 1 ORDER BY 2;
 Smaller and faster INDEX (better for `@>`)
 
 ```sql
-CREATE INDEX on reviews USING GIN (review jsonb_path_ops);
+CREATE INDEX on review_sample USING GIN (review jsonb_path_ops);
 ```
 
 ### Constraints
 
 ```sql
-ALTER TABLE reviews
+ALTER TABLE review_sample
 ADD CONSTRAINT
 "validate_review_rating" CHECK ((review #>> '{review,rating}')::int <= 5);
 
-INSERT INTO reviews
+INSERT INTO review_sample
 VALUES ('{"review": {"rating": 10}}');
 ```
 
