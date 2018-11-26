@@ -31,7 +31,7 @@ We are looking for a **UX Designer** for our **Madrid** office, more details [he
 ## Contents
 
 * Workshop set up
-* [plsql](https://github.com/CartoDB/labs-postgresql/blob/master/workshop/psql.md) tricks demo
+* [psql](https://github.com/CartoDB/labs-postgresql/blob/master/workshop/psql.md) tricks demo
 * [Visual EXPLAINs](https://github.com/CartoDB/labs-postgresql/blob/master/workshop/pev.md) exercise
 * [PostGIS](https://github.com/CartoDB/labs-postgresql/blob/master/workshop/postgis.md) exercise
 * [Expression Based Indexes](https://github.com/CartoDB/labs-postgresql/blob/master/workshop/indexes-on-expressions.md) exercise
