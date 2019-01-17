@@ -1,4 +1,3 @@
-
 # PostgreSQL Workshop
 
 ## Foreword
